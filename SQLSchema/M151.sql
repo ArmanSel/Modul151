@@ -47,6 +47,6 @@ INSERT INTO `m151`.`tw_transfers` (`PlayerId`, `OldTeamId`, `NewTeamId`, `Transf
 INSERT INTO `m151`.`tw_transfers` (`PlayerId`, `OldTeamId`, `NewTeamId`, `TransferSum`) VALUES ('5', '2', '3', '11500000');
 
 USE `m151`;
-CREATE  OR REPLACE VIEW `tw_v_transfersOverview` AS
-SELECT p.PlayerFirstName AS 'First Name', p.PlayerLastName AS 'Last Name', p.PlayerAge AS 'Age', PlayerNationality AS 'Nationality', p.PlayerPosition AS 'Position', (SELECT TeamName FROM tw_teams WHERE TeamId = OldTeamId) AS 'Old Team', (SELECT TeamName FROM tw_teams WHERE TeamId  = NewTeamId) AS 'New Team', (SELECT IF(tr.TransferSum = 0, 'Free', tr.TransferSum)) AS 'Transfer Fee'
+CREATE  OR REPLACE VIEW `tw_v_transferOverview` AS
+SELECT tr.TransferId, p.PlayerFirstName AS 'First Name', p.PlayerLastName AS 'Last Name', p.PlayerAge AS 'Age', PlayerNationality AS 'Nationality', p.PlayerPosition AS 'Position', (SELECT TeamName FROM tw_teams WHERE TeamId = OldTeamId) AS 'Old Team', (SELECT TeamName FROM tw_teams WHERE TeamId  = NewTeamId) AS 'New Team', (SELECT IF(tr.TransferSum = 0, 'Free', tr.TransferSum)) AS 'Transfer Fee'
 FROM tw_transfers tr LEFT JOIN tw_players p ON tr.PlayerId = p.PlayerId;

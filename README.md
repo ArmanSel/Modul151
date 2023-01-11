@@ -11,9 +11,24 @@ Bei unserer API geht um ein Fussball Transferfenster. Der Spieler Name, sein zur
 # Architektur
 
 - PHP
-- Use Case's
-- ERM
+  <br>
+    Das Projekt wird, aufgrund der Aufgabenstellung, mit PHP programmiert. Es dürfen auch keine Frameworks verwendet werden ausser die Aufgabenstellung verlangt dies.
+- Aufbau
+  <br>
+    Der Aufbau von unserem Projekt sieht wiefolgt aus:
+
+    Das Projekt wird in verschiedene Dateien unterteilt. Die erste Datei kümmert sich um die Datenbank verbindung. Danach folgt je eine PHP Datei für jede Funktion der API. Das auslesen, bearbeiten, erstellen und löschen der Daten werden auf 4 verschiedene PHP Dateien unterteilt. Damit können wir die Aufgaben jeweils unterteilen und haben damit auch eine bessere Übersicht über das Projekt.
 
 ## Thema 1 Native SQL Statements
 Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der Dokumentation definiert wurden ist.
+- Use Case's
+  <br>
+  Hier ist die Liste von unseren Use Case's für die API:
+    - Ein Transfer sollte per TransferId aus der Datenbank geholt werden
+    - Wenn man mehrere TransferIds angibt, dann sollten auch mehrere Resultate angezeigt werden.
+    - Wenn keine TransferId angegeben wird, dann sollen alle Resultate angezeigt werden.
+    - Wenn eine falsche / nicht vorhandene TransferId angegeben wird, dann sollte eine Fehlermeldung auftauchen.
+    - Man sollte auch Transfers aus der Datenbank ändern können.
+    - Man sollte auch neue Transfers erfassen können.
+- ERM
 
