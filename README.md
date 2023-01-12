@@ -24,11 +24,11 @@ Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der
 - Use Case's
   <br>
   Hier ist die Liste von unseren Use Case's für die API:
-    - Ein Transfer sollte per TransferId aus der Datenbank geholt werden
-    - Wenn man mehrere TransferIds angibt, dann sollten auch mehrere Resultate angezeigt werden.
-    - Wenn keine TransferId angegeben wird, dann sollen alle Resultate angezeigt werden.
+    - [x] Ein Transfer sollte per TransferId aus der Datenbank geholt werden
+    - [x] Wenn man mehrere TransferIds angibt, dann sollten auch mehrere Resultate angezeigt werden.
+    - [x] Wenn "all" angegeben wird, dann sollen alle Resultate angezeigt werden.
     - Wenn eine falsche / nicht vorhandene TransferId angegeben wird, dann sollte eine Fehlermeldung auftauchen.
     - Man sollte auch Transfers aus der Datenbank ändern können.
-    - Man sollte auch neue Transfers erfassen können.
+    - [x] Man sollte auch neue Transfers erfassen können.
 - ERM
 
