@@ -27,7 +27,7 @@ Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der
     - [x] Ein Transfer sollte per TransferId aus der Datenbank geholt werden
     - [x] Wenn man mehrere TransferIds angibt, dann sollten auch mehrere Resultate angezeigt werden.
     - [x] Wenn "all" angegeben wird, dann sollen alle Resultate angezeigt werden.
-    - [ ] Wenn eine falsche / nicht vorhandene TransferId angegeben wird, dann sollte eine Fehlermeldung auftauchen.
+    - [x] Wenn eine falsche / nicht vorhandene TransferId angegeben wird, dann sollte eine Fehlermeldung auftauchen.
     - [x] Man sollte Transfers aus der Datenbank ändern können.
     - [x] Man sollte neue Transfers erfassen können.
     - [x] Man sollte Transfers in der Datenbank löschen können.
