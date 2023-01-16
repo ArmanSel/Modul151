@@ -3,51 +3,37 @@ header("Content-Type:application/json");
 if (isset($_GET['TransferId']) && $_GET['TransferId']!="") {
     include('db.php');
     $transferId = $_GET['TransferId'];
-    if (!is_numeric($transferId))
-    {
-        if (strtolower($transferId) != "all")
-        {
-            echo "Invalid input";
-            return;
-        }
-    }
-    $query = "SELECT * FROM `tw_v_transferOverview`";
-    if (strtolower($transferId) != "all")
-    {
-        $query .= "WHERE TransferId IN ($transferId)";
-    }
-    $result = mysqli_query($con, $query);
-    if(mysqli_num_rows($result)>0){
-        $counter = 0;
-        $errorOccured = false;
-        $exceptionMessage = "";
-        while($counter < mysqli_num_rows($result))
-        {
+    $transferIdArr = explode(",", $transferId);
+    foreach ($transferIdArr as $s) {
+        $stmt = $con->prepare("CALL tw_getTransfers(?);");
+        $stmt->bind_param("i", $s);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if (mysqli_num_rows($result) > 0) {
+            $errorOccured = false;
+            $exceptionMessage = "";
             try {
-                $row = mysqli_fetch_array($result);
-                $firstName = $row['First Name'];
-                $lastName = $row['Last Name'];
-                $age = $row['Age'];
-                $nationality = $row['Nationality'];
-                $position = $row['Position'];
-                $oldTeam = $row['Old Team'];
-                $newTeam = $row['New Team'];
-                $transferFee = $row['Transfer Fee'];
-            }
-            catch (Exception $e)
-            {
-                $errorOccured = true;
-                $exceptionMessage = "Following exception occured: " . $e->getMessage();
+                 $row = mysqli_fetch_array($result);
+                 $firstName = $row['First Name'];
+                 $lastName = $row['Last Name'];
+                 $age = $row['Age'];
+                 $nationality = $row['Nationality'];
+                 $position = $row['Position'];
+                 $oldTeam = $row['Old Team'];
+                 $newTeam = $row['New Team'];
+                 $transferFee = $row['Transfer Fee'];
+            } catch (Exception $e) {
+                 $errorOccured = true;
+                 $exceptionMessage = "Following exception occured: " . $e->getMessage();
             }
             response($firstName, $lastName, $age, $nationality, $position, $oldTeam, $newTeam, $transferFee, $errorOccured, $exceptionMessage);
-            $counter++;
+            $stmt->close();
+        } else {
+            echo "No record found!";
         }
-        mysqli_close($con);
     }
-    else
-    {
-        echo "No record found!";
-    }
+
+    mysqli_close($con);
 }
 
 function response($firstName,$lastName,$age,$nationality,$position,$oldTeam,$newTeam,$transferFee,$errorOccured,$exceptionMessage=null){
@@ -81,4 +67,3 @@ function response($firstName,$lastName,$age,$nationality,$position,$oldTeam,$new
         echo $exceptionMessage;
     }
 }
-?>
