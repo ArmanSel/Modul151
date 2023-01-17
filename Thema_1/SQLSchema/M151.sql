@@ -39,7 +39,10 @@ CREATE TABLE tw_Transfers (
 	PlayerId INT NOT NULL,
 	OldTeamId INT NOT NULL,
 	NewTeamId INT NOT NULL,
-	TransferSum FLOAT NOT NULL
+	TransferSum FLOAT NOT NULL,
+    FOREIGN KEY (PlayerId) REFERENCES tw_players(PlayerId),
+    FOREIGN KEY (OldTeamId) REFERENCES tw_teams(TeamId),
+    FOREIGN KEY (NewTeamId) REFERENCES tw_teams(TeamId)
 );
 
 INSERT INTO `m151`.`tw_transfers` (`PlayerId`, `OldTeamId`, `NewTeamId`, `TransferSum`) VALUES ('1', '1', '8', '0.0');
@@ -75,7 +78,7 @@ DROP procedure IF EXISTS `tw_deleteTransfer`;
 
 DELIMITER $$
 USE `m151`$$
-CREATE PROCEDURE `tw_deleteTransfer` (IN input VARCHAR(255))
+CREATE PROCEDURE `tw_deleteTransfer` (IN input INT)
 BEGIN
 	DELETE FROM tw_transfers WHERE TransferId = input;
 END$$
@@ -114,6 +117,112 @@ USE `m151`$$
 CREATE PROCEDURE `tw_getTransfersData` (IN input INT)
 BEGIN
 	SELECT * FROM tw_transfers WHERE TransferId = input;
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_getPlayers`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_getPlayers` (IN input VARCHAR(255))
+BEGIN
+	CASE WHEN input = 'all'
+    THEN
+		SELECT * FROM tw_players;
+    ELSE
+		SELECT * FROM tw_players WHERE PlayerId = input;
+	END CASE;
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_updatePlayer`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_updatePlayer` (IN input INT, IN firstName VARCHAR(255), IN lastName VARCHAR(255), IN age INT, IN nationality VARCHAR(255), IN playerPosition VARCHAR(50))
+BEGIN
+	UPDATE tw_players SET PlayerFirstName = firstName, PlayerLastName = lastName, PlayerAge = age, PlayerNationality = nationality, PlayerPosition = playerPosition WHERE PlayerId = input;
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_insertPlayer`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_insertPlayer` (IN firstName VARCHAR(255), IN lastName VARCHAR(255), IN age INT, IN nationality VARCHAR(255), IN playerPosition VARCHAR(50))
+BEGIN
+	INSERT INTO tw_players (PlayerFirstName, PlayerLastName, PlayerAge, PlayerNationality, PlayerPosition) VALUES (firstName, lastName, age, nationality, playerPosition);
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_deletePlayer`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_deletePlayer` (IN input INT)
+BEGIN
+	DELETE FROM tw_players WHERE PlayerId = input;
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_getTeams`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_getTeams` (IN input VARCHAR(255))
+BEGIN
+	CASE WHEN input = 'all'
+    THEN
+	SELECT * FROM tw_teams;
+    ELSE
+		SELECT * FROM tw_teams WHERE TeamId = input;
+	END CASE;
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_updateTeam`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_updateTeam` (IN input INT, IN teamName VARCHAR(255), IN teamLeague VARCHAR(255))
+BEGIN
+	UPDATE tw_teams SET TeamName = teamName, TeamLeague = teamLeague WHERE TeamId = input;
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_insertTeam`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_insertTeam` (IN teamName VARCHAR(255), IN teamLeague VARCHAR(255))
+BEGIN
+	INSERT INTO tw_teams (TeamName, TeamLeague) VALUES (teamName, teamLeague);
+END$$
+
+DELIMITER ;
+
+USE `m151`;
+DROP procedure IF EXISTS `tw_deleteTeam`;
+
+DELIMITER $$
+USE `m151`$$
+CREATE PROCEDURE `tw_deleteTeam` (IN input INT)
+BEGIN
+	DELETE FROM tw_teams WHERE TeamId = input;
 END$$
 
 DELIMITER ;
