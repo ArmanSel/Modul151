@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/composer" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/Thema 2/vendor/doctrine/inflector" />
+    </include_path>
+  </component>
+</project>
