@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS M151;
+
 CREATE DATABASE M151;
 
 USE M151;
@@ -58,7 +60,12 @@ DELIMITER $$
 USE `m151`$$
 CREATE PROCEDURE `tw_getTransfers` (IN input VARCHAR(255))
 BEGIN
-	SELECT * FROM tw_v_transferOverview WHERE TransferId = input;
+	CASE WHEN input = 'all'
+    THEN
+		SELECT * FROM tw_v_transferOverview;
+    ELSE
+		SELECT * FROM tw_v_transferOverview WHERE TransferId = input;
+	END CASE;
 END$$
 
 DELIMITER ;
@@ -110,5 +117,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-
-UPDATE tw_transfers SET PlayerId = 2, OldTeamId = 1, NewTeamId = 2, TransferSum = 1000 WHERE TransferId = 6;
