@@ -1,20 +1,20 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
-    include('db.php');
+    include('../db.php');
     $PlayerId = $_GET["PlayerId"];
     $OldTeamId = $_GET["OldTeamId"];
     $NewTeamId = $_GET["NewTeamId"];
     $TransferSum = $_GET["TransferSum"];
     try{
-        $stmt = $con->prepare("CALL tw_insertTransfer(?,?,?,?);");
-        $stmt->bind_param("iiii", $PlayerId,$OldTeamId,$NewTeamId,$TransferSum);
-        $stmt->execute();
-        $stmt->close();
+        $transfersCollection = $client->m151->tw_transfers;
+
+        $transfersCollection->insertOne(["TransferId" => $transfersCollection->countDocuments() + 1, "PlayerId" => $PlayerId, "OldTeamId" => $OldTeamId,
+        "NewTeamId" => $NewTeamId, "TransferSum" => $TransferSum]);
 
         echo "Transfer has successfully been inserted!";
     }
-    catch(mysqli_sql_exception $e)
+    catch(Exception $e)
     {
         echo "A exception occured: " . $e->getMessage();
     }
