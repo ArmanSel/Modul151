@@ -33,3 +33,4 @@ Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der
     - [ ] Beim Aufrufen von einer Funktion sollte im Fehler fall eine Fehlermeldung angezeigt werden.
 - ERM
 
+![M151_ERD](https://user-images.githubusercontent.com/91592508/213154819-a1454509-eded-47bf-9393-479924badfc6.png)
