@@ -17,7 +17,8 @@ Bei unserer API geht um ein Fussball Transferfenster. Der Spieler Name, sein zur
   <br>
     Der Aufbau von unserem Projekt sieht wiefolgt aus:
 
-    Das Projekt wird in verschiedene Dateien unterteilt. Die erste Datei kümmert sich um die Datenbank verbindung. Danach folgt je eine PHP Datei für jede Funktion der API. Das auslesen, bearbeiten, erstellen und löschen der Daten werden auf 4 verschiedene PHP Dateien unterteilt. Damit können wir die Aufgaben jeweils unterteilen und haben damit auch eine bessere Übersicht über das Projekt.
+    Das Projekt wird in verschiedene Dateien unterteilt. Die erste Datei kümmert sich um die Datenbank verbindung. Danach folgt je eine PHP Datei für jede Funktion der API. Das auslesen, bearbeiten, erstellen und löschen der Daten werden auf 4 verschiedene PHP Dateien unterteilt. Dies wird gemacht für die Transfers, Spieler und Teams. Insgesamt werden es dann 12 Dateien sein, die direkt mit der Datenbank interagieren und je nach Funktion auch ein Resulat zurückgeben. Die Queries werden in der Datei definiert, für die jeweilige Funktion (get, delete, put, post) Hier ist noch eine kleine Darstellung wie unsere Architektur aussieht:
+![M151_Architektur](https://user-images.githubusercontent.com/91592508/213156685-e3cf34e6-8cc6-422d-90fb-28c142d99c48.png)
 
 ## Thema 1 Native SQL Statements
 Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der Dokumentation definiert wurden ist.
@@ -34,3 +35,4 @@ Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der
 - ERM
 
 ![M151_ERD](https://user-images.githubusercontent.com/91592508/213154819-a1454509-eded-47bf-9393-479924badfc6.png)
+
