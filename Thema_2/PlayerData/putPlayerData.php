@@ -16,10 +16,9 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
         if ($result->fetchNumeric())
         {
             $qb = $conn->createQueryBuilder();
-            $qb->update("tw_players")->set("PlayerFirstName", $PlayerFirstName)->set("PlayerLastName", $PlayerLastName)->set("PlayerAge", $PlayerAge)
-                ->set("PlayerNationality", $PlayerNationality)->set("PlayerPosition", $PlayerPosition)->where("PlayerId = $PlayerId");
+            $qb->update("tw_players")->set("PlayerFirstName", "'$PlayerFirstName'")->set("PlayerLastName", "'$PlayerLastName'")->set("PlayerAge", $PlayerAge)
+                ->set("PlayerNationality", "'$PlayerNationality'")->set("PlayerPosition", "'$PlayerPosition'")->where("PlayerId = $PlayerId");
             $qb->executeQuery();
-
             echo "Player has successfully been updated!";
         }
         else

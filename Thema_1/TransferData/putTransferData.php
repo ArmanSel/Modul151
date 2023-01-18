@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
-    include('db.php');
+    include('../db.php');
     $TransferId = $_GET["TransferId"];
     $PlayerId = $_GET["PlayerId"];
     $OldTeamId = $_GET["OldTeamId"];

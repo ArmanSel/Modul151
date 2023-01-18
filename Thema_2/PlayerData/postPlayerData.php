@@ -7,7 +7,8 @@ if (isset($_GET['PlayerFirstName']) && $_GET['PlayerFirstName'] != "") {
     $PlayerAge = $_GET["PlayerAge"];
     $PlayerNationality = $_GET["PlayerNationality"];
     $PlayerPosition = $_GET["PlayerPosition"];
-    $values = array("PlayerFirstName" => $PlayerFirstName, "PlayerLastName" => $PlayerLastName, "PlayerAge" => $PlayerAge, "PlayerNationality" => $PlayerNationality, "PlayerPosition" => $PlayerPosition);
+    $values = array("PlayerFirstName" => "'$PlayerFirstName'", "PlayerLastName" => "'$PlayerLastName'", "PlayerAge" => $PlayerAge,
+        "PlayerNationality" => "'$PlayerNationality'", "PlayerPosition" => "'$PlayerPosition'");
     try{
         $qb = $conn->createQueryBuilder();
         $qb->insert("tw_players")->values($values);

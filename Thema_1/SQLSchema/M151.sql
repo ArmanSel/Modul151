@@ -183,7 +183,7 @@ CREATE PROCEDURE `tw_getTeams` (IN input VARCHAR(255))
 BEGIN
 	CASE WHEN input = 'all'
     THEN
-	SELECT * FROM tw_teams;
+		SELECT * FROM tw_teams;
     ELSE
 		SELECT * FROM tw_teams WHERE TeamId = input;
 	END CASE;

@@ -5,7 +5,6 @@ if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
     $TeamId = $_GET["TeamId"];
     $TeamName = $_GET["TeamName"];
     $TeamLeague = $_GET["TeamLeague"];
-    $values = array($TeamId, $TeamName, $TeamLeague);
     try {
         $qb = $conn->createQueryBuilder();
         $qb->select("*")->from("tw_teams")->where("TeamId = $TeamId");
@@ -13,7 +12,7 @@ if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
         if ($result->rowCount() > 0)
         {
             $qb = $conn->createQueryBuilder();
-            $qb->update("tw_teams")->set("TeamName", $TeamName)->set("TeamLeague", $TeamLeague)->where("TeamId = $TeamId");
+            $qb->update("tw_teams")->set("TeamName", "'$TeamName'")->set("TeamLeague", "'$TeamLeague'")->where("TeamId = $TeamId");
             $qb->executeQuery();
 
             echo "Teams has successfully been updated!";
