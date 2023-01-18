@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
-    include('db.php');
+    include('../db.php');
     $TeamId = $_GET["TeamId"];
     try {
         $stmt = $con->prepare("CALL tw_deleteTeam(?);");

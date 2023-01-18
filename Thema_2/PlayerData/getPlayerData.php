@@ -1,20 +1,21 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
-    include('db.php');
-    $transferId = $_GET['TransferId'];
-    if (!is_numeric($transferId)) {
-        if (strpos($transferId, ",") == false) {
-            if (strtolower($transferId) != "all") {
+if (isset($_GET['PlayerId']) && $_GET['PlayerId']!="") {
+    include('../db.php');
+    $playerId = $_GET['PlayerId'];
+    if(!is_numeric($playerId)){
+        if (strpos($playerId, ",") == false){
+            if (strtolower($playerId) != "all")
+            {
                 echo "Invalid input";
                 return;
             }
         }
     }
-
-    if ($transferId == "all") {
+    if ($playerId == "all")
+    {
         $qb = $conn->createQueryBuilder();
-        $qb->select("*")->from("tw_v_transferOverview");
+        $qb->select("*")->from("tw_players");
         try {
             $result = $qb->executeQuery();
             while ($row = $result->fetchNumeric())
@@ -27,24 +28,21 @@ if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
                     $age = $row[3];
                     $nationality = $row[4];
                     $position = $row[5];
-                    $oldTeam = $row[6];
-                    $newTeam = $row[7];
-                    $transferFee = $row[8];
                 } catch (Exception $e) {
                     $errorOccured = true;
                     $exceptionMessage = "Following exception occured: " . $e->getMessage();
                 }
-
-                response($firstName, $lastName, $age, $nationality, $position, $oldTeam, $newTeam, $transferFee, $errorOccured, $exceptionMessage);
+                response($firstName, $lastName, $age, $nationality, $position, $errorOccured, $exceptionMessage);
             }
         } catch (\Doctrine\DBAL\Exception $e) {
             echo "Following exception occured: " . $e->getMessage();
         }
-    } else {
-        $transferIdArr = explode(",", $transferId);
-        foreach ($transferIdArr as $s) {
+    }
+    else{
+        $playerIdArr = explode(",", $playerId);
+        foreach ($playerIdArr as $s) {
             $qb = $conn->createQueryBuilder();
-            $qb->select("*")->from("tw_v_transferOverview")->where("TransferId = $s");
+            $qb->select("*")->from("tw_players")->where("PlayerId = $s");
             try {
                 $result = $qb->executeQuery();
                 if ($row = $result->fetchNumeric()) {
@@ -56,14 +54,11 @@ if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
                         $age = $row[3];
                         $nationality = $row[4];
                         $position = $row[5];
-                        $oldTeam = $row[6];
-                        $newTeam = $row[7];
-                        $transferFee = $row[8];
                     } catch (Exception $e) {
                         $errorOccured = true;
                         $exceptionMessage = "Following exception occured: " . $e->getMessage();
                     }
-                    response($firstName, $lastName, $age, $nationality, $position, $oldTeam, $newTeam, $transferFee, $errorOccured, $exceptionMessage);
+                    response($firstName, $lastName, $age, $nationality, $position, $errorOccured, $exceptionMessage);
                 } else {
                     echo "No record found!";
                 }
@@ -74,28 +69,20 @@ if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
     }
 }
 
-function response($firstName, $lastName, $age, $nationality, $position, $oldTeam, $newTeam, $transferFee, $errorOccured, $exceptionMessage = null)
-{
-    if ($errorOccured == false) {
+function response($firstName,$lastName,$age,$nationality,$position,$errorOccured,$exceptionMessage=null){
+    if ($errorOccured == false)
+    {
         $response['FirstName'] = $firstName;
         $response['LastName'] = $lastName;
         $response['Age'] = $age;
         $response['Nationality'] = $nationality;
         $response['Position'] = $position;
-        $response['OldTeam'] = $oldTeam;
-        $response['NewTeam'] = $newTeam;
-        if ($transferFee != "Free") {
-            if ($transferFee > 1000000000) $response['TransferFee'] = round(($transferFee / 1000000000), 2) . ' billion';
-            elseif ($transferFee > 1000000) $response['TransferFee'] = round(($transferFee / 1000000), 2) . ' million';
-            elseif ($transferFee > 1000) $response['TransferFee'] = round(($transferFee / 1000), 2) . ' thousand';
-        } else {
-            $response['TransferFee'] = $transferFee;
-        }
-
 
         $json_response = json_encode($response);
         echo $json_response;
-    } else {
+    }
+    else
+    {
         echo $exceptionMessage;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
-    include('db.php');
+    include('../db.php');
     $PlayerId = $_GET["PlayerId"];
     $PlayerFirstName = $_GET["PlayerFirstName"];
     $PlayerLastName = $_GET["PlayerLastName"];
@@ -22,7 +22,7 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
             $stmt->execute();
             $stmt->close();
 
-            echo "Transfer has successfully been updated!";
+            echo "Player has successfully been updated!";
         }
         else
         {

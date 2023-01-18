@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['TeamName']) && $_GET['TeamName'] != "") {
-    include('db.php');
+    include('../db.php');
     $TeamName = $_GET["TeamName"];
     $TeamLeague = $_GET["TeamLeague"];
     try{

@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['TeamId']) && $_GET['TeamId']!="") {
-    include('db.php');
+    include('../db.php');
     $teamId = $_GET['TeamId'];
     if(!is_numeric($teamId)){
         if (strpos($teamId, ",") == false){
@@ -37,8 +37,8 @@ if (isset($_GET['TeamId']) && $_GET['TeamId']!="") {
         $stmt->close();
     }
     else{
-        $playerIdArr = explode(",", $teamId);
-        foreach ($playerIdArr as $s) {
+        $teamIdArr = explode(",", $teamId);
+        foreach ($teamIdArr as $s) {
             $stmt = $con->prepare("CALL tw_getTeams(?);");
             $stmt->bind_param("i", $s);
             $stmt->execute();

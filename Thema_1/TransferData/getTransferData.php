@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['TransferId']) && $_GET['TransferId']!="") {
-    include('db.php');
+    include('../db.php');
     $transferId = $_GET['TransferId'];
     if(!is_numeric($transferId)){
         if (strpos($transferId, ",") == false){

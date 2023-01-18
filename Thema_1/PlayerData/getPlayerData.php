@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['PlayerId']) && $_GET['PlayerId']!="") {
-    include('db.php');
+    include('../db.php');
     $playerId = $_GET['PlayerId'];
     if(!is_numeric($playerId)){
         if (strpos($playerId, ",") == false){

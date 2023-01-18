@@ -1,13 +1,12 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
-    include('db.php');
+    include('../db.php');
     $TransferId = $_GET["TransferId"];
     $PlayerId = $_GET["PlayerId"];
     $OldTeamId = $_GET["OldTeamId"];
     $NewTeamId = $_GET["NewTeamId"];
     $TransferSum = $_GET["TransferSum"];
-    $values = array($TransferId, $PlayerId, $OldTeamId, $NewTeamId, $TransferSum);
     try {
         $qb = $conn->createQueryBuilder();
         $qb->select("*")->from("tw_transfers")->where("TransferId = $TransferId");

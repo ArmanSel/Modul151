@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
-    include('db.php');
+    include('../db.php');
     $TeamId = $_GET["TeamId"];
     $TeamName = $_GET["TeamName"];
     $TeamLeague = $_GET["TeamLeague"];
@@ -19,7 +19,7 @@ if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
             $stmt->execute();
             $stmt->close();
 
-            echo "Transfer has successfully been updated!";
+            echo "Team has successfully been updated!";
         }
         else
         {
