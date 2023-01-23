@@ -51,7 +51,6 @@ function getPlayer($playerId)
 
 function buildResponse($firstName,$lastName,$age,$nationality,$position): bool|string
 {
-
         $response['FirstName'] = $firstName;
         $response['LastName'] = $lastName;
         $response['Age'] = $age;

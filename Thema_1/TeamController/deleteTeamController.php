@@ -1,9 +1,8 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
-    include('../db.php');
-    $TeamId = $_GET["TeamId"];
+function deletePlayer($TeamId){
     try {
+        include ("../db.php");
         $stmt = $con->prepare("CALL tw_deleteTeam(?);");
         $stmt->bind_param("i", $TeamId);
         $stmt->execute();
@@ -16,4 +15,3 @@ if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

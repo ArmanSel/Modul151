@@ -1,9 +1,7 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TeamName']) && $_GET['TeamName'] != "") {
+function postTeam($TeamName,$TeamLeague) {
     include('../db.php');
-    $TeamName = $_GET["TeamName"];
-    $TeamLeague = $_GET["TeamLeague"];
     try{
         $stmt = $con->prepare("CALL tw_insertTeam(?,?);");
         $stmt->bind_param("ss", $TeamName,$TeamLeague);
@@ -17,4 +15,3 @@ if (isset($_GET['TeamName']) && $_GET['TeamName'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>
