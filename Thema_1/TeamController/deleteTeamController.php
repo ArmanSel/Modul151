@@ -1,6 +1,6 @@
 <?php
 header("Content-Type:application/json");
-function deletePlayer($TeamId){
+function deleteTeam($TeamId){
     try {
         include ("../db.php");
         $stmt = $con->prepare("CALL tw_deleteTeam(?);");
