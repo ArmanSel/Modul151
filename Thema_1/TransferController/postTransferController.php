@@ -1,12 +1,8 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
-    include('../db.php');
-    $PlayerId = $_GET["PlayerId"];
-    $OldTeamId = $_GET["OldTeamId"];
-    $NewTeamId = $_GET["NewTeamId"];
-    $TransferSum = $_GET["TransferSum"];
+function postTransfer($PlayerId,$OldTeamId,$NewTeamId,$TransferSum){
     try{
+        include('../db.php');
         $stmt = $con->prepare("CALL tw_insertTransfer(?,?,?,?);");
         $stmt->bind_param("iiii", $PlayerId,$OldTeamId,$NewTeamId,$TransferSum);
         $stmt->execute();
@@ -19,4 +15,3 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>
