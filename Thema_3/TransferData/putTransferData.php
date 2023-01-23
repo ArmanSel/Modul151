@@ -10,10 +10,11 @@ if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
     try {
         $transfersCollection = $client->m151->tw_transfers;
 
-        $transfersCollection->findOneAndUpdate(["TransferId" => $TransferSum], ['$set' => ["PlayerId" => $PlayerId, "OldTeamId" => $OldTeamId, "NewTeamId" => $NewTeamId,
+        $result = $transfersCollection->updateMany(["TransferId" => $TransferSum], ['$set' => ["PlayerId" => $PlayerId, "OldTeamId" => $OldTeamId, "NewTeamId" => $NewTeamId,
             "TransferSum" => $TransferSum]]);
 
         echo "Transfer has successfully been updated!";
+        echo $result->getUpsertedCount();
     }
     catch(Exception $e)
     {

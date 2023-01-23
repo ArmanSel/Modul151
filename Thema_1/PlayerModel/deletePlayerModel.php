@@ -5,7 +5,4 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
     $PlayerId = $_GET["PlayerId"];
 
     deletePlayer($PlayerId);
-
-    echo "Player has successfully been deleted!";
 }
-?>

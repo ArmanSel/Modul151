@@ -6,8 +6,9 @@ function getPlayer($playerId)
     if(!is_numeric($playerId) && !strpos($playerId, ",") && strtolower($playerId) != "all")
     {
         echo "Invalid input";
-        return;
+        return false;
     }
+    $response = null;
     $playerIdArr = explode(",", $playerId);
     foreach ($playerIdArr as $s) {
         $stmt = $con->prepare("CALL tw_getPlayers(?);");
@@ -15,10 +16,8 @@ function getPlayer($playerId)
         $stmt->execute();
         $result = $stmt->get_result();
         if (mysqli_num_rows($result) > 0) {
-            var_dump($result);
             while(($row = mysqli_fetch_row($result)) != null)
             {
-                var_dump($row);
                 $errorOccured = false;
                 $exceptionMessage = "";
                 try {
@@ -34,13 +33,7 @@ function getPlayer($playerId)
 
                 if (!$errorOccured)
                 {
-                    $response['FirstName'] = $firstName;
-                    $response['LastName'] = $lastName;
-                    $response['Age'] = $age;
-                    $response['Nationality'] = $nationality;
-                    $response['Position'] = $position;
-
-                    return json_encode($response);
+                    $response .= buildResponse($firstName,$lastName,$age,$nationality,$position);
                 }
                 else
                 {
@@ -48,6 +41,7 @@ function getPlayer($playerId)
                 }
             }
             $stmt->close();
+            return $response;
         } else {
             echo "No record found!";
         }
@@ -55,6 +49,14 @@ function getPlayer($playerId)
     mysqli_close($con);
 }
 
-function response($firstName,$lastName,$age,$nationality,$position,$errorOccured,$exceptionMessage=null){
+function buildResponse($firstName,$lastName,$age,$nationality,$position): bool|string
+{
 
+        $response['FirstName'] = $firstName;
+        $response['LastName'] = $lastName;
+        $response['Age'] = $age;
+        $response['Nationality'] = $nationality;
+        $response['Position'] = $position;
+
+        return json_encode($response);
 }
