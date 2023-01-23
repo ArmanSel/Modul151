@@ -1,8 +1,8 @@
 <?php
 header("Content-Type:application/json");
 function postPlayer($PlayerFirstName,$PlayerLastName,$PlayerAge,$PlayerNationality,$PlayerPosition){
-    include ("../db.php");
     try{
+        include ("../db.php");
         $stmt = $con->prepare("CALL tw_insertPlayer(?,?,?,?,?);");
         $stmt->bind_param("ssiss", $PlayerFirstName,$PlayerLastName,$PlayerAge,$PlayerNationality,$PlayerPosition);
         $stmt->execute();

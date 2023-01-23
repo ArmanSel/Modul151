@@ -12,4 +12,3 @@ if (isset($_GET['PlayerFirstName']) && $_GET['PlayerFirstName'] != "") {
 
     echo "Player has successfully been inserted!";
 }
-?>

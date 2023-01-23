@@ -1,12 +1,12 @@
 <?php
 header("Content-Type:application/json");
-function getPlayer($playerId)
+function getPlayer($playerId): ?string
 {
     include("../db.php");
     if(!is_numeric($playerId) && !strpos($playerId, ",") && strtolower($playerId) != "all")
     {
         echo "Invalid input";
-        return false;
+        return null;
     }
     $response = null;
     $playerIdArr = explode(",", $playerId);

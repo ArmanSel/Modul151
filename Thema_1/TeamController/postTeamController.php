@@ -1,8 +1,8 @@
 <?php
 header("Content-Type:application/json");
 function postTeam($TeamName,$TeamLeague) {
-    include('../db.php');
     try{
+        include('../db.php');
         $stmt = $con->prepare("CALL tw_insertTeam(?,?);");
         $stmt->bind_param("ss", $TeamName,$TeamLeague);
         $stmt->execute();

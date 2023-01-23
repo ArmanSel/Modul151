@@ -15,4 +15,3 @@ function deleteTransfer($TransferId){
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>
