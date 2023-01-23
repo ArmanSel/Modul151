@@ -25,13 +25,28 @@ Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der
 - Use Case's
   <br>
   Hier ist die Liste von unseren Use Case's für die API:
+  Transfers:
     - [x] Ein Transfer sollte per TransferId aus der Datenbank geholt werden
     - [x] Wenn man mehrere TransferIds angibt, dann sollten auch mehrere Resultate angezeigt werden.
-    - [ ] Wenn "all" angegeben wird, dann sollen alle Resultate angezeigt werden.
+    - [x] Wenn "all" angegeben wird, dann sollen alle Resultate angezeigt werden.
     - [x] Man sollte Transfers aus der Datenbank ändern können.
     - [x] Man sollte neue Transfers erfassen können.
     - [x] Man sollte Transfers in der Datenbank löschen können.
-    - [ ] Beim Aufrufen von einer Funktion sollte im Fehler fall eine Fehlermeldung angezeigt werden.
+  Spieler:
+    - [x] Ein Spieler sollte per SpielerId aus der Datenbank geholt werden
+    - [x] Wenn man mehrere SpielerIds angibt, dann sollten auch mehrere Resultate angezeigt werden.
+    - [x] Wenn "all" angegeben wird, dann sollen alle Resultate angezeigt werden.
+    - [x] Man sollte Spieler aus der Datenbank ändern können.
+    - [x] Man sollte neue Spieler erfassen können.
+    - [x] Man sollte Spieler in der Datenbank löschen können.
+  Team:
+    - [x] Ein Team sollte per TeamId aus der Datenbank geholt werden
+    - [x] Wenn man mehrere TeamIds angibt, dann sollten auch mehrere Resultate angezeigt werden.
+    - [x] Wenn "all" angegeben wird, dann sollen alle Resultate angezeigt werden.
+    - [x] Man sollte Teams aus der Datenbank ändern können.
+    - [x] Man sollte neue Teams erfassen können.
+    - [x] Man sollte Teams in der Datenbank löschen können.
+- [x] Beim Aufrufen von einer Funktion sollte im Fehler fall eine Fehlermeldung angezeigt werden.
 - ERM
 
 ![M151_ERD](https://user-images.githubusercontent.com/91592508/213154819-a1454509-eded-47bf-9393-479924badfc6.png)
