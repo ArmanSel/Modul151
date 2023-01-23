@@ -41,12 +41,12 @@ function getPlayer($playerId)
                 }
             }
             $stmt->close();
-            return $response;
         } else {
             echo "No record found!";
         }
     }
     mysqli_close($con);
+    return $response;
 }
 
 function buildResponse($firstName,$lastName,$age,$nationality,$position): bool|string
