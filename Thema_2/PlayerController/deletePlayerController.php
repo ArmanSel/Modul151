@@ -1,9 +1,8 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
-    include('../db.php');
-    $PlayerId = $_GET["PlayerId"];
+function deletePlayer($PlayerId){
     try {
+        include('../db.php');
         $qb = $conn->createQueryBuilder();
         $qb->delete("tw_players")->where("PlayerId = $PlayerId");
         $qb->executeQuery();
@@ -15,4 +14,3 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

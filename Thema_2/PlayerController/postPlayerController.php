@@ -1,15 +1,10 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['PlayerFirstName']) && $_GET['PlayerFirstName'] != "") {
-    include('../db.php');
-    $PlayerFirstName = $_GET["PlayerFirstName"];
-    $PlayerLastName = $_GET["PlayerLastName"];
-    $PlayerAge = $_GET["PlayerAge"];
-    $PlayerNationality = $_GET["PlayerNationality"];
-    $PlayerPosition = $_GET["PlayerPosition"];
+function postPlayer($PlayerFirstName,$PlayerLastName,$PlayerAge,$PlayerNationality,$PlayerPosition){
     $values = array("PlayerFirstName" => "'$PlayerFirstName'", "PlayerLastName" => "'$PlayerLastName'", "PlayerAge" => $PlayerAge,
         "PlayerNationality" => "'$PlayerNationality'", "PlayerPosition" => "'$PlayerPosition'");
     try{
+        include('../db.php');
         $qb = $conn->createQueryBuilder();
         $qb->insert("tw_players")->values($values);
         $qb->executeQuery();
@@ -21,4 +16,3 @@ if (isset($_GET['PlayerFirstName']) && $_GET['PlayerFirstName'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

@@ -1,11 +1,9 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TeamName']) && $_GET['TeamName'] != "") {
-    include('../db.php');
-    $TeamName = $_GET["TeamName"];
-    $TeamLeague = $_GET["TeamLeague"];
+function postTeam($TeamName,$TeamLeague){
     $values = array("TeamName" => "'$TeamName'", "TeamLeague" => "'$TeamLeague'");
     try{
+        include('../db.php');
         $qb = $conn->createQueryBuilder();
         $qb->insert("tw_teams")->values($values);
         $qb->executeQuery();
@@ -17,4 +15,3 @@ if (isset($_GET['TeamName']) && $_GET['TeamName'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

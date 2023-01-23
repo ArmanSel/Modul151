@@ -1,11 +1,6 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
-    include('../db.php');
-    $PlayerId = $_GET["PlayerId"];
-    $OldTeamId = $_GET["OldTeamId"];
-    $NewTeamId = $_GET["NewTeamId"];
-    $TransferSum = $_GET["TransferSum"];
+function postTransfer($PlayerId,$OldTeamId,$NewTeamId,$TransferSum){
     $values =array(
         "PlayerId" => $PlayerId,
         "OldTeamId" => $OldTeamId,
@@ -13,6 +8,7 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
         "TransferSum" => $TransferSum
     );
     try{
+        include('../db.php');
         $qb = $conn->createQueryBuilder();
         $qb->insert("tw_transfers")->values($values);
         $qb->executeQuery();
@@ -24,4 +20,3 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

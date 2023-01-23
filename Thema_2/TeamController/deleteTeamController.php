@@ -1,11 +1,11 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
-    include('../db.php');
-    $TeamId = $_GET["TeamId"];
+function deleteTeam($TeamId){
     try {
+        include("../db.php");
         $qb = $conn->createQueryBuilder();
         $qb->delete("tw_teams")->where("TeamId = $TeamId");
+        $qb->executeQuery();
 
         echo "Team has successfully been deleted!";
     }
@@ -14,4 +14,3 @@ if (isset($_GET['TeamId']) && $_GET['TeamId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

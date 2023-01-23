@@ -1,9 +1,8 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
-    include('../db.php');
-    $TransferId = $_GET["TransferId"];
+function deleteTransfer($TransferId){
     try {
+        include('../db.php');
         $qb = $conn->createQueryBuilder();
         $qb->delete("tw_transfers")->where("TransferId = $TransferId");
         $qb->executeQuery();

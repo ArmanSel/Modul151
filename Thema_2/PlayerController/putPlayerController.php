@@ -1,19 +1,9 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
-    include('../db.php');
-    $PlayerId = $_GET["PlayerId"];
-    $PlayerFirstName = $_GET["PlayerFirstName"];
-    $PlayerLastName = $_GET["PlayerLastName"];
-    $PlayerAge = $_GET["PlayerAge"];
-    $PlayerNationality = $_GET["PlayerNationality"];
-    $PlayerPosition = $_GET["PlayerPosition"];
+function putPlayer($PlayerId,$PlayerFirstName,$PlayerLastName,$PlayerAge,$PlayerNationality,$PlayerPosition){
     try {
-        $qb = $conn->createQueryBuilder();
-        $qb->select("*")->from("tw_players")->where("PlayerId = $PlayerId");
-        $result = $qb->executeQuery();
-
-        if ($result->fetchNumeric())
+        include('../db.php');
+        if (checkIfPlayerExists($PlayerId, $conn))
         {
             $qb = $conn->createQueryBuilder();
             $qb->update("tw_players")->set("PlayerFirstName", "'$PlayerFirstName'")->set("PlayerLastName", "'$PlayerLastName'")->set("PlayerAge", $PlayerAge)
@@ -31,4 +21,22 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>
+
+function checkIfPlayerExists($PlayerId, $conn): bool
+{
+    try {
+        $qb = $conn->createQueryBuilder();
+        $qb->select("*")->from("tw_players")->where("PlayerId = $PlayerId");
+        $result = $qb->executeQuery();
+        if ($result->fetchNumeric())
+        {
+            return true;
+        }
+        return false;
+    }
+    catch(\Doctrine\DBAL\Exception $e)
+    {
+        echo "A exception occured: " . $e->getMessage();
+        return false;
+    }
+}
