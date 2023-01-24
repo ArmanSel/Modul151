@@ -1,16 +1,12 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['PlayerId']) && $_GET['PlayerId']!="") {
+function getPlayer($playerId){
     include('../db.php');
-    $playerId = $_GET['PlayerId'];
-    if (!is_numeric($playerId)) {
-        if (strpos($playerId, ",") == false) {
-            if (strtolower($playerId) != "all") {
-                echo "Invalid input";
-                return;
-            }
-        }
+    if (!is_numeric($playerId) && strpos($playerId, ",") == false && strtolower($playerId) != "all") {
+        echo "Invalid input";
+        return;
     }
+
     $playersCollection = $client->m151->tw_players;
 
     if ($playerId == "all") {
@@ -28,7 +24,10 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId']!="") {
                 $resultPlayerPosition = $s['PlayerPosition'];
             }
 
-            response($resultPlayerFirstName, $resultPlayerLastName, $resultPlayerAge, $resultPlayerNationality, $resultPlayerPosition, false);
+            if (isset($resultPlayerFirstName) && isset($resultPlayerLastName) && isset($resultPlayerAge) && isset($resultPlayerNationality) && isset($resultPlayerPosition))
+            {
+                response($resultPlayerFirstName, $resultPlayerLastName, $resultPlayerAge, $resultPlayerNationality, $resultPlayerPosition, false);
+            }
 
             $counter++;
         }

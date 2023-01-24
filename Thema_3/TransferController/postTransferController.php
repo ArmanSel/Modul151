@@ -1,12 +1,8 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
-    include('../db.php');
-    $PlayerId = $_GET["PlayerId"];
-    $OldTeamId = $_GET["OldTeamId"];
-    $NewTeamId = $_GET["NewTeamId"];
-    $TransferSum = $_GET["TransferSum"];
+function postTransfer($PlayerId, $OldTeamId, $NewTeamId, $TransferSum){
     try{
+        include("../db.php");
         $transfersCollection = $client->m151->tw_transfers;
 
         $transfersCollection->insertOne(["TransferId" => $transfersCollection->countDocuments() + 1, "PlayerId" => $PlayerId, "OldTeamId" => $OldTeamId,
@@ -19,4 +15,3 @@ if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

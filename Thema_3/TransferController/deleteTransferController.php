@@ -1,9 +1,8 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
-    include('../db.php');
-    $TransferId = $_GET["TransferId"];
+function deleteTransfer($TransferId){
     try {
+        include('../db.php');
         $transfersCollection = $client->m151->tw_transfers;
         settype($TransferId, "integer");
         $transfersCollection->deleteOne(["TransferId" => $TransferId]);
@@ -15,4 +14,3 @@ if (isset($_GET['TransferId']) && $_GET['TransferId'] != "") {
         echo "A exception occured: " . $e->getMessage();
     }
 }
-?>

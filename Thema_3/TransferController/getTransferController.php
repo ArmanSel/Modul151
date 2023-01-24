@@ -1,15 +1,10 @@
 <?php
 header("Content-Type:application/json");
-if (isset($_GET['TransferId']) && $_GET['TransferId']!="") {
+function getTransfer($transferId){
     include('../db.php');
-    $transferId = $_GET['TransferId'];
-    if (!is_numeric($transferId)) {
-        if (strpos($transferId, ",") == false) {
-            if (strtolower($transferId) != "all") {
-                echo "Invalid input";
-                return;
-            }
-        }
+    if (!is_numeric($transferId) && strpos($transferId, ",") == false && strtolower($transferId) != "all") {
+        echo "Invalid input";
+        return;
     }
 
     $transfersCollection = $client->m151->tw_transfers;
@@ -57,11 +52,13 @@ if (isset($_GET['TransferId']) && $_GET['TransferId']!="") {
                 foreach ($newTeamResult as $nt) {
                     $resultNewTeam = $nt['TeamName'];
                 }
-
-                response($resultFirstName, $resultLastName, $resultAge, $resultNationality, $resultPosition, $resultOldTeam, $resultNewTeam, $resultTransferSum, false);
-
-                $counter++;
+                if (isset($resultFirstName) && isset($resultLastName) && isset($resultAge) && isset($resultNationality) && isset($resultPosition)
+                    && isset($resultOldTeam) && isset($resultNewTeam) && isset($resultTransferSum))
+                {
+                    response($resultFirstName, $resultLastName, $resultAge, $resultNationality, $resultPosition, $resultOldTeam, $resultNewTeam, $resultTransferSum, false);
+                }
             }
+            $counter++;
         }
 
     } else {
@@ -108,7 +105,11 @@ if (isset($_GET['TransferId']) && $_GET['TransferId']!="") {
                     $resultNewTeam = $nt['TeamName'];
                 }
 
-                response($resultFirstName, $resultLastName, $resultAge, $resultNationality, $resultPosition, $resultOldTeam, $resultNewTeam, $resultTransferSum, false);
+                if (isset($resultFirstName) && isset($resultLastName) && isset($resultAge) && isset($resultNationality) && isset($resultPosition)
+                    && isset($resultOldTeam) && isset($resultNewTeam) && isset($resultTransferSum))
+                {
+                    response($resultFirstName, $resultLastName, $resultAge, $resultNationality, $resultPosition, $resultOldTeam, $resultNewTeam, $resultTransferSum, false);
+                }
             }
         }
     }
