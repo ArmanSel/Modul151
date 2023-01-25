@@ -4,12 +4,15 @@ function putTransfer($TransferId,$PlayerId,$OldTeamId,$NewTeamId,$TransferSum){
     try {
         include('../db.php');
         $transfersCollection = $client->m151->tw_transfers;
-
-        $result = $transfersCollection->updateMany(["TransferId" => $TransferId], ['$set' => ["PlayerId" => $PlayerId, "OldTeamId" => $OldTeamId, "NewTeamId" => $NewTeamId,
+        settype($TransferId, "integer");
+        settype($PlayerId, "integer");
+        settype($OldTeamId, "integer");
+        settype($NewTeamId, "integer");
+        settype($TransferSum, "integer");
+        $transfersCollection->UpdateOne(["TransferId" => $TransferId], ['$set' => ["PlayerId" => $PlayerId, "OldTeamId" => $OldTeamId, "NewTeamId" => $NewTeamId,
             "TransferSum" => $TransferSum]]);
 
         echo "Transfer has successfully been updated!";
-        echo $result->getUpsertedCount();
     }
     catch(Exception $e)
     {

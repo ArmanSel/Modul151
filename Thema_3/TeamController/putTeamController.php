@@ -4,7 +4,7 @@ function putTeam($TeamId,$TeamName,$TeamLeague){
     try {
         include('../db.php');
         $teamsCollection = $client->m151->tw_teams;
-
+        settype($TeamId, "integer");
         $teamsCollection->findOneAndUpdate(["TeamId" => $TeamId], ['$set' => ["TeamName" => $TeamName, "TeamLeague" => $TeamLeague]]);
 
         echo "Team has successfully been updated!";

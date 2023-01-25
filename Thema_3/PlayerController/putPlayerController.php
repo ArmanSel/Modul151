@@ -4,8 +4,8 @@ function putPlayer($PlayerId,$PlayerFirstName,$PlayerLastName,$PlayerAge,$Player
     try {
         include('../db.php');
         $playersCollection = $client->m151->tw_players;
-
-        $playersCollection->findOneAndUpdate(["PlayerId" => $PlayerId], ['$set' => ["PlayerFirstName" => $PlayerFirstName, "PlayerLastName" => $PlayerLastName,
+        settype($PlayerId, "integer");
+        $playersCollection->updateOne(["PlayerId" => $PlayerId], ['$set' => ["PlayerFirstName" => $PlayerFirstName, "PlayerLastName" => $PlayerLastName,
             "PlayerAge" => $PlayerAge, "PlayerNationality" => $PlayerNationality, "PlayerPosition" => $PlayerPosition]]);
 
         echo "Player has successfully been updated!";
