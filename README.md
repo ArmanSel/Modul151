@@ -55,3 +55,7 @@ Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der
 ## ERM
 
 ![M151_ERD](https://user-images.githubusercontent.com/91592508/213154819-a1454509-eded-47bf-9393-479924badfc6.png)
+
+## Fazit
+
+Im Allgemeinen gab es nie grosse Probleme beim Bearbeiten dieses Projektes. Wir kamen immer schnell voran und musste nie wirklich Hilfe suchen. Am Anfang hatten wir jedoch Schwierigkeiten, da keiner von uns viel PHP Erfahrung hatte und noch nie eine API selbst erstellt hat. Doch wir konnten diese Hürden schnell überwinden. In Zukunft wissen wir nun von Anfang an, wie man ein PHP API Projekt starten sollte. Dazu können wir später uns auf wichtigere Punkte fokussieren, anstatt Nebensachen, die wir bei diesem Projekt angetroffen haben.
