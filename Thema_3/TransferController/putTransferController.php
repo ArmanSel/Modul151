@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// updates existing Transfer from the database.
 function putTransfer($TransferId,$PlayerId,$OldTeamId,$NewTeamId,$TransferSum){
     try {
         include('../db.php');

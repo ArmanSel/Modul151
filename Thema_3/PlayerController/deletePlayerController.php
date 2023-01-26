@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// deletes Player from database.
 function deletePlayer($PlayerId){
     try {
         include('../db.php');

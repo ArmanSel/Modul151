@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// inserts Transfer from the database.
 function postTransfer($PlayerId, $OldTeamId, $NewTeamId, $TransferSum){
     try{
         include("../db.php");

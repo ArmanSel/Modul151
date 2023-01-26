@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// updates existing Team in the database
 function putTeam($TeamId,$TeamName,$TeamLeague){
     try {
         include('../db.php');

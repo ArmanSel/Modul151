@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// gets Players from database. Supports cases where "all" is entered to show every entry in the database.
 function getPlayer($playerId){
     include('../db.php');
     if (!is_numeric($playerId) && strpos($playerId, ",") == false && strtolower($playerId) != "all") {

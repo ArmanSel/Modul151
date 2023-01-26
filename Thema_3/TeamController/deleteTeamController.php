@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// deletes Team from the database.
 function deleteTeam($TeamId){
     try {
         include('../db.php');

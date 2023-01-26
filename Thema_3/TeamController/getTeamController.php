@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// gets Team from the Database.
 function getTeam($teamId){
     include('../db.php');
     if (!is_numeric($teamId) && strpos($teamId, ",") == false && strtolower($teamId) != "all") {

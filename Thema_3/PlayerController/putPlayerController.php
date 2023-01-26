@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// Updates existing Player from database.
 function putPlayer($PlayerId,$PlayerFirstName,$PlayerLastName,$PlayerAge,$PlayerNationality,$PlayerPosition){
     try {
         include('../db.php');

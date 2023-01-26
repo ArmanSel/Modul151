@@ -1,5 +1,6 @@
 <?php
 header("Content-Type:application/json");
+// gets Transfer from the database.
 function getTransfer($transferId){
     include('../db.php');
     if (!is_numeric($transferId) && strpos($transferId, ",") == false && strtolower($transferId) != "all") {
