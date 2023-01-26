@@ -6,18 +6,18 @@ Dies ist für das Modul 151, das von Gabriel Varga & Arman-Din Selimovic bearbei
 
 # API
 
-Bei unserer API geht um ein Fussball Transferfenster. Der Spieler Name, sein zurzeitiges Heimclub und der Transferclub wird angezeigt. Dazu noch die Datume & Ablösessume angezeigt. Dazu kann man auch selber einen neuen Transfer erfassen, einen vorhandenen bearbeiten oder auch einen vorhandenen Entfernen. Das gleiche ist auch möglich mit den Spielern und Teams. Diese kann man ebenfalls anschauen, bearbeiten, neu erstellen oder auch löschen.
+Bei unserer API geht es um ein Fussball Transferfenster. Der Spieler Name, sein zurzeitiges Heimclub und der Transferclub wird angezeigt. Dazu noch die Datume & Ablösessume angezeigt. Dazu kann man auch selber einen neuen Transfer erfassen, einen vorhandenen bearbeiten oder auch einen vorhandenen Entfernen. Das gleiche ist auch möglich mit den Spielern und Teams. Diese kann man ebenfalls anschauen, bearbeiten, neu erstellen oder auch löschen.
 
 # Architektur
 
 - PHP
   <br>
-    Das Projekt wird, aufgrund der Aufgabenstellung, mit PHP programmiert. Es dürfen auch keine Frameworks verwendet werden ausser die Aufgabenstellung verlangt dies.
+    Das Projekt wird, aufgrund der Aufgabenstellung, mit PHP programmiert. Es dürfen auch keine Frameworks verwendet werden, ausser die Aufgabenstellung verlangt dies explizit.
 - Aufbau
   <br>
-    Der Aufbau von unserem Projekt sieht wiefolgt aus:
+    Der Aufbau von unserem Projekt sieht folgendes aus:
 
-    Das Projekt wird in verschiedene Dateien unterteilt. Die erste Datei kümmert sich um die Datenbank verbindung. Danach folgt je ein Controller und ein Model für jede Funktion der API. Das auslesen, bearbeiten, erstellen und löschen der Daten werden auf 4 verschiedene PHP Dateien unterteilt. Dies wird gemacht für die Transfers, Spieler und Teams. Insgesamt werden es dann 12 Controller und 12 Models sein. Die Models rufen eine Methode von Controller auf, welche mit der Datenbank kommuniziert und dann auch die Datenbankabfragen ausführt. Je nach dem was ausgeführt wird, bekommt man dann auch ein Resultat oder nur eine Meldung ob ein Fehler aufgetreten ist oder nicht. Die Queries werden in der Datei definiert, für die jeweilige Funktion (get, delete, put, post) Hier ist noch eine kleine Darstellung wie unsere Architektur aussieht:
+    Das Projekt wird in verschiedene Themen unterteilt. Die erste Datei kümmert sich um die Datenbank verbindung. Danach folgt je ein Controller und ein Model für jede Funktion der API. Das auslesen, bearbeiten, erstellen und löschen der Daten werden auf 4 verschiedene PHP Dateien unterteilt. Dies wird gemacht für die Transfers, Spieler und Teams. Insgesamt werden es dann 12 Controller und 12 Models sein. Die Models rufen eine Methode von Controller auf, welche mit der Datenbank kommuniziert und dann auch die Datenbankabfragen ausführt. Je nach dem was ausgeführt wird, bekommt man dann auch ein Resultat oder nur eine Meldung ob ein Fehler aufgetreten ist oder nicht. Die Queries werden in der Datei definiert, für die jeweilige Funktion (get, delete, put, post) Hier ist noch eine kleine Darstellung wie unsere Architektur aussieht:
     
 ![M151_Architecture](https://user-images.githubusercontent.com/91592508/214017628-a6be0515-f318-4604-9720-25a11f16b6e4.png)
 
@@ -48,7 +48,6 @@ Bei diesem Thema müssen wir ein WebAPI erstellen mit der Architektur die in der
     - [x] Man sollte neue Teams erfassen können.
     - [x] Man sollte Teams in der Datenbank löschen können.
   - [x] Beim Aufrufen von einer Funktion sollte im Fehler fall eine Fehlermeldung angezeigt werden.
-- ERM
+## ERM
 
 ![M151_ERD](https://user-images.githubusercontent.com/91592508/213154819-a1454509-eded-47bf-9393-479924badfc6.png)
-
