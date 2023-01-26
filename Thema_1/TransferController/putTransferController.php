@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Edits and successfully updates a transfer
 function putTransfer($TransferId,$PlayerId,$OldTeamId,$NewTeamId,$TransferSum){
     try {
         include('../db.php');

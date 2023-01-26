@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Function to delete a player in the table.
 function deletePlayer($playerId)
 {
     try{

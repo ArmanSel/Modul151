@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Function to create a new player in the database.
 function postPlayer($PlayerFirstName,$PlayerLastName,$PlayerAge,$PlayerNationality,$PlayerPosition){
     try{
         include ("../db.php");

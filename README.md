@@ -8,6 +8,10 @@ Dies ist für das Modul 151, das von Gabriel Varga & Arman-Din Selimovic bearbei
 
 Bei unserer API geht es um ein Fussball Transferfenster. Der Spieler Name, sein zurzeitiges Heimclub und der Transferclub wird angezeigt. Dazu noch die Datume & Ablösessume angezeigt. Dazu kann man auch selber einen neuen Transfer erfassen, einen vorhandenen bearbeiten oder auch einen vorhandenen Entfernen. Das gleiche ist auch möglich mit den Spielern und Teams. Diese kann man ebenfalls anschauen, bearbeiten, neu erstellen oder auch löschen.
 
+# Vorgehensweise
+
+Zusammen haben wir uns die Aufgaben unterteilt, jedoch haben wir bei den meisten "Extreme Programming" angewendet. Bei diesem "Extreme Programming" handelt es sich um "Pair Programming".
+
 # Architektur
 
 - PHP

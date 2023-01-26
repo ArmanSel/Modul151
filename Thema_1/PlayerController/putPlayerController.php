@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Function to edit and successfully update a player in the database.
 function putPlayer($PlayerId,$PlayerFirstName,$PlayerLastName,$PlayerAge,$PlayerNationality,$PlayerPosition){
     try {
         include ("../db.php");

@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Gets a transfer
 function getTransfer($transferId): ?string
 {
     include('../db.php');

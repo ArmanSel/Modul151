@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Function to create a team
 function postTeam($TeamName,$TeamLeague) {
     try{
         include('../db.php');

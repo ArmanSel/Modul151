@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Function to edit and successfully update a team
 function putTeam($TeamId,$TeamName,$TeamLeague){
     try {
         include('../db.php');

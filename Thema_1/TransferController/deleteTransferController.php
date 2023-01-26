@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Deletes transfer
 function deleteTransfer($TransferId){
     try {
         include('../db.php');

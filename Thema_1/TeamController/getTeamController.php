@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Function to get a team
 function getTeam($teamId): ?string
 {
     include('../db.php');

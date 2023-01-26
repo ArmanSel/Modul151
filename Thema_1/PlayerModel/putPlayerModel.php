@@ -1,5 +1,8 @@
 <?php
 header("Content-Type:application/json");
+
+// Handler for put request. Checks if PlayerId was entered in the URL.
+
 if (isset($_GET['PlayerId']) && $_GET['PlayerId'] != "") {
     include('../PlayerController/putPlayerController.php');
     $PlayerId = $_GET["PlayerId"];

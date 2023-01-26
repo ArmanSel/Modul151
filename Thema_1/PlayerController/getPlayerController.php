@@ -1,5 +1,7 @@
 <?php
 header("Content-Type:application/json");
+
+// Function to get a player and display him from the database
 function getPlayer($playerId): ?string
 {
     include("../db.php");
